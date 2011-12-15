@@ -209,7 +209,11 @@ class block_course_menu extends block_base
             )
         );
         $this->page->requires->js_init_call('M.block_course_menu.init_add_tree', $arguments, false, $module);
-        $this->page->requires->js_init_call('M.block_course_menu.create_tab', $arguments, true, $module);
+        if(file_exists("$CFG->dirroot/blocks/course_menu/tab1.php")){           
+            require("$CFG->dirroot/blocks/course_menu/tab1.php");
+            $this->page->requires->js_init_call('M.block_course_menu.create_tab', $jsdata, true, $module);
+        }
+        
         
         
         //render output
